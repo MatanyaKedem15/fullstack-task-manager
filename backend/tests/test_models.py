@@ -1,4 +1,6 @@
-# backend/tests/test_models.py
+import os, sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import unittest
 from models import Task
 
