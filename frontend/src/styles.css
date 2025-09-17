@@ -1,0 +1,174 @@
+:root{
+  --bg:#0f172a;        /* slate-900 */
+  --panel:#111827;     /* gray-900 */
+  --muted:#94a3b8;     /* slate-400 */
+  --text:#e5e7eb;      /* gray-200 */
+  --accent:#6366f1;    /* indigo-500 */
+  --accent-2:#22c55e;  /* green-500 */
+  --danger:#ef4444;    /* red-500 */
+  --border:#1f2937;    /* gray-800 */
+  --shadow:0 10px 25px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0; background:linear-gradient(180deg,#0b1223, #0f172a 35%);
+  color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+}
+.container{
+  max-width:900px; margin:40px auto; padding:0 16px;
+}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));
+  border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow);
+  padding:24px;
+}
+.header{
+  display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px;
+}
+.title{
+  display:flex; align-items:center; gap:10px; margin:0;
+  font-size:28px; font-weight:700; letter-spacing:.2px;
+}
+.badge{
+  font-size:12px; color:var(--muted); border:1px solid var(--border);
+  padding:4px 8px; border-radius:999px;
+}
+.row{display:flex; gap:10px}
+input[type="text"]{
+  background:#0b1223; border:1px solid var(--border); color:var(--text);
+  padding:10px 12px; border-radius:10px; outline:none; transition: border .15s, box-shadow .15s;
+}
+input[type="text"]:focus{ border-color:var(--accent); box-shadow:0 0 0 3px rgba(99,102,241,.25) }
+
+button{
+  appearance:none; border:1px solid transparent; background:#2563eb; /* כחול ברור */
+  color:#fff; font-weight:700;
+  padding:10px 14px; border-radius:10px; cursor:pointer;
+  transition:transform .15s, background .15s, box-shadow .15s, opacity .15s;
+}
+button:hover{ transform:translateY(-1px); background:#1d4ed8 }
+button:active{ transform:translateY(0); }
+button:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(37,99,235,.35) }
+
+button.secondary{
+  background:#0b1223; border-color:var(--border); color:var(--text);
+}
+button.secondary:hover{ border-color:#334155 }
+
+button.danger{
+  background:var(--danger);
+}
+button.danger:hover{ background:#dc2626 }
+
+hr{ border:0; border-top:1px solid var(--border); margin:18px 0 }
+
+.list{ list-style:none; margin:0; padding:0 }
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #334155; /* אפור בהיר יותר שיהיה בולט */
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+/* Checkbox – ניראות גבוהה גם כשהוא לא מסומן */
+.checkbox{
+  appearance:none;
+  width:20px;
+  height:20px;
+  border-radius:6px;
+  background:#0b1223;              /* כהה אך מובחן מהרקע */
+  border:2px solid #64748b;        /* slate-500 – קונטרסט גבוה יותר מהקודם */
+  position:relative;
+  cursor:pointer;
+  transition: border-color .15s, background .15s, box-shadow .15s, transform .05s;
+}
+
+/* הבלטה בעת ריחוף/פוקוס */
+.item:hover .checkbox{ border-color:#94a3b8; }    /* slate-400 */
+.checkbox:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(99,102,241,.35);      /* טבעת פוקוס נגישה */
+  border-color:#cbd5e1;                           /* slate-300 */
+}
+
+/* כשהוא מסומן – נשאר כמו שהיה (ירוק) */
+.checkbox:checked{
+  background:var(--accent-2);
+  border-color:var(--accent-2);
+}
+.checkbox:checked::after{
+  content:"";
+  position:absolute; left:5px; top:2px; width:5px; height:9px;
+  border:2px solid #052e11; border-top:0; border-left:0; transform:rotate(45deg);
+}
+
+.item-title{ font-weight:700 }
+.item-desc{ color:var(--muted); font-size:14px }
+
+/* כשמשימה בוצעה – גם הכותרת וגם התיאור מקבלים קו */
+.item.done .item-title,
+.item.done .item-desc {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.toolbar{ display:flex; gap:8px; margin-left:auto }
+
+.footer{
+  margin-top:12px; display:flex; align-items:center; justify-content:space-between; color:var(--muted);
+  font-size:13px;
+}
+/* --- Buttons explicit variants --- */
+button{
+  appearance:none;
+  border:2px solid #3b82f6;           /* מסגרת כחולה נראית */
+  background:#1d4ed8;                 /* כחול בולט כברירת מחדל */
+  color:#fff;
+  font-weight:800;
+  padding:10px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow:0 6px 16px rgba(29,78,216,.25);  /* זוהר עדין כברירת מחדל */
+  transition:transform .15s, background .15s, box-shadow .15s, opacity .15s;
+}
+button:hover{
+  background:#1e40af;
+  box-shadow:0 8px 20px rgba(29,78,216,.35);
+}
+button:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(59,130,246,.45), 0 6px 16px rgba(29,78,216,.25);
+}
+
+/* כפתור ראשי ירוק (ל־Add) */
+.btn-primary{
+  border:2px solid #16a34a;
+  background:#22c55e;                 /* ירוק בולט על הרקע הכהה */
+  color:#0b1223;
+  box-shadow:0 6px 16px rgba(34,197,94,.25);
+}
+.btn-primary:hover{
+  background:#16a34a;
+  box-shadow:0 8px 20px rgba(34,197,94,.32);
+}
+.btn-primary:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(34,197,94,.35), 0 8px 20px rgba(34,197,94,.32);
+}
+
+/* מצב כבוי/לא זמין – עדיין נראה! */
+button:disabled,
+.btn-primary:disabled{
+  background:#334155;                 /* אפור כהה נראה */
+  border-color:#475569;
+  color:#cbd5e1;
+  opacity:1;                          /* לא לשים 0.5 כדי שלא ייעלם */
+  cursor:not-allowed;
+  box-shadow:none;
+}
