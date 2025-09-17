@@ -17,16 +17,31 @@ Users can add, update, mark as done, and delete tasks — with a clean UI and pe
 ## 📂 Project Structure
 ```
 fullstack-task-app/
-├─ backend/        # Flask API (Python)
-│  ├─ app.py
-│  └─ models.py
-├─ frontend/       # React + Vite (JS)
-│  ├─ public/
-│  └─ src/
-│     ├─ components/
-│     ├─ App.jsx
-│     └─ main.jsx
-└─ README.md
+│
+├── backend/
+│   ├── app.py
+│   ├── models.py
+│   ├── requirements.txt
+│   ├── utils/
+│   │   └── seed.py
+│   └── tests/
+│       └── test_models.py
+│
+├── frontend/
+│   ├── package.json
+│   ├── vite.config.js
+│   ├── public/
+│   │   └── index.html
+│   └── src/
+│       ├── main.jsx
+│       ├── App.jsx
+│       ├── styles.css
+│       ├── config.js
+│       └── components/
+│           ├── TaskForm.jsx
+│           └── TaskList.jsx
+│
+└── README.md
 
 ```
 
