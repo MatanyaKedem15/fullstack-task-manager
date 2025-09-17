@@ -1,5 +1,2 @@
-# אל תספור CSS בסטטיסטיקה של GitHub Linguist
 *.css linguist-vendored
-
-# ודא ש-JSX נספר כ-JavaScript
 *.jsx linguist-language=JavaScript
