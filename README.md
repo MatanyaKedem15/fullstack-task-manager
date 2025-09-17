@@ -17,22 +17,17 @@ Users can add, update, mark as done, and delete tasks — with a clean UI and pe
 ## 📂 Project Structure
 ```
 fullstack-task-app/
-│
-├── backend/ # Flask API
-│ ├── app.py
-│ ├── models.py
-│ ├── requirements.txt
-│
-├── frontend/ # React + Vite
-│ ├── package.json
-│ └── src/
-│ ├── App.jsx
-│ ├── main.jsx
-│ ├── styles.css
-│ └── components/
-│ ├── TaskForm.jsx
-│ └── TaskList.jsx
-└── README.md
+├─ backend/        # Flask API (Python)
+│  ├─ app.py
+│  └─ models.py
+├─ frontend/       # React + Vite (JS)
+│  ├─ public/
+│  └─ src/
+│     ├─ components/
+│     ├─ App.jsx
+│     └─ main.jsx
+└─ README.md
+
 ```
 
 ---
@@ -55,14 +50,14 @@ python app.py
 Runs API at: http://127.0.0.1:5000
 
 ### 2. Frontend
-```
+```bash
 cd frontend
 npm install
 npm run dev
 ```
 Runs client at: http://localhost:5173
 
-- Note: If you want to access from your phone on the same Wi-Fi:
+#### Access from phone on same Wi-Fi (optional):
 - Run frontend with host: npm run dev -- --host
 - Run backend with: app.run(host="0.0.0.0", port=5000, debug=True)
 - Update src/config.js to use your machine IP, e.g. http://192.168.1.23:5000.
@@ -80,5 +75,5 @@ Runs client at: http://localhost:5173
 ## 👤 Author
 **Matanya Kedem**
 
-[LinkedIn](https://www.linkedin.com/in/USERNAME) [GitHub](https://github.com/USERNAME)
+[LinkedIn](https://www.linkedin.com/in/USERNAME) • [GitHub](https://github.com/USERNAME)
 
