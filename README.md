@@ -68,9 +68,8 @@ Runs client at: http://localhost:5173
 - Update src/config.js to use your machine IP, e.g. http://192.168.1.23:5000.
 
 ## 📸 Screenshot
-```
 ![Task Manager Screenshot](screenshot.png)
-```
+
 
 ## 🔮 Future Work 
 - Inline editing of task title/description
