@@ -23,8 +23,13 @@ fullstack-task-app/
 │   ├── models.py
 │   ├── requirements.txt
 │   ├── utils/
-│   │   └── seed.py
+│   │   ├── seed.py
+│   │   ├── export_tasks.py
+│   │   ├── import_tasks.py
+│   │   ├── api_client.py
+│   │   └── cli.py
 │   └── tests/
+│       ├── test_api.py
 │       └── test_models.py
 │
 ├── frontend/
@@ -41,7 +46,9 @@ fullstack-task-app/
 │           ├── TaskForm.jsx
 │           └── TaskList.jsx
 │
+├── .gitignore
 └── README.md
+
 
 ```
 
