@@ -88,15 +88,17 @@ Runs client at: http://localhost:5173
 ## 📸 Screenshot
 ![Task Manager Screenshot](screenshot.png)
 
-## ✅ QA & Tests
+## ✅ QA & Automation (pytest)
 
-This project includes **API tests** (pytest) for the Flask backend (full CRUD):
+The backend includes **API integration tests** using `pytest` and Flask’s test client:
 
-- Healthcheck
-- Create (validation & trimming)
-- List (ordered by creation time, desc)
-- Update (title/description/done)
-- Delete (and 404 cases)
+- Healthcheck endpoint
+- Create (validation + input trimming)
+- List (ordered by `created_at` desc)
+- Update (title / description / done)
+- Delete (+ 404 cases)
+
+Each test runs against a **fresh SQLite DB** (fixture), ensuring full isolation.
 
 **Run tests**
 ```bash
