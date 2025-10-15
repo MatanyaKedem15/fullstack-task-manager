@@ -29,6 +29,7 @@ fullstack-task-app/
 │   │   ├── api_client.py
 │   │   └── cli.py
 │   └── tests/
+│       ├── conftest.py
 │       ├── test_api.py
 │       └── test_models.py
 │
@@ -87,6 +88,26 @@ Runs client at: http://localhost:5173
 ## 📸 Screenshot
 ![Task Manager Screenshot](screenshot.png)
 
+## ✅ QA & Tests
+
+This project includes **API tests** (pytest) for the Flask backend (full CRUD):
+
+- Healthcheck
+- Create (validation & trimming)
+- List (ordered by creation time, desc)
+- Update (title/description/done)
+- Delete (and 404 cases)
+
+**Run tests**
+```bash
+cd backend
+pip install -r requirements.txt   # make sure pytest / pytest-cov are included
+pytest -q
+```
+With coverage
+```
+pytest --cov=./ --cov-report=term-missing
+```
 
 ## 🔮 Future Work 
 - Inline editing of task title/description
