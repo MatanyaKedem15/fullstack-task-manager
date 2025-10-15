@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, timezone
 
 db = SQLAlchemy()
 
@@ -10,7 +10,7 @@ class Task(db.Model):
     title = db.Column(db.String(160), nullable=False)
     description = db.Column(db.Text, default="")
     done = db.Column(db.Boolean, default=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
     def to_dict(self):
         return {
@@ -18,5 +18,5 @@ class Task(db.Model):
             "title": self.title,
             "description": self.description or "",
             "done": self.done,
-            "created_at": self.created_at.isoformat(),
+            "created_at": self.created_at.isoformat() if self.created_at else None,
         }
