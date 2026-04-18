@@ -29,6 +29,10 @@ def create_task():
     db.session.commit()
     return jsonify(task.to_dict()), 201
 
+@app.route("/")
+def home():
+    return "Task Manager API is running"
+
 @app.put("/tasks/<int:task_id>")
 def update_task(task_id):
     task = Task.query.get_or_404(task_id)
