@@ -31,7 +31,7 @@ def create_task():
 
 @app.route("/")
 def home():
-    return "Task Manager API is running"
+    return {"message": "Task Manager API is running"}
 
 @app.put("/tasks/<int:task_id>")
 def update_task(task_id):
