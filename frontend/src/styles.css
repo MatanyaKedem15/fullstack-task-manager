@@ -172,3 +172,72 @@ button:disabled,
   cursor:not-allowed;
   box-shadow:none;
 }
+.task-form{
+  display:flex;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.task-form input{
+  min-width:0;
+}
+
+.task-form input:first-of-type{
+  flex:2;
+}
+
+.task-form input:nth-of-type(2){
+  flex:3;
+}
+
+.task-form button{
+  white-space:nowrap;
+}
+
+@media (max-width: 768px){
+  .container{
+    margin:20px auto;
+    padding:0 12px;
+  }
+
+  .card{
+    padding:16px;
+  }
+
+  .header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .title{
+    font-size:22px;
+    line-height:1.15;
+  }
+
+  .task-form{
+    flex-direction:column;
+  }
+
+  .task-form input,
+  .task-form button{
+    width:100%;
+  }
+
+  .footer{
+    flex-direction:column;
+    align-items:stretch;
+    gap:12px;
+  }
+
+  .footer button{
+    width:100%;
+  }
+
+  .toolbar{
+    margin-left:0;
+  }
+
+  .item{
+    align-items:flex-start;
+  }
+}
