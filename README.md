@@ -2,7 +2,9 @@
 
 A simple **full-stack task management app** with Flask (backend) and React (frontend).  
 Users can add, update, mark as done, and delete tasks - with a clean UI and persistent storage.
-
+## Live Demo
+Frontend: (https://fullstack-task-manager-1.onrender.com/)
+Backend API: (https://fullstack-task-manager-58pu.onrender.com/)
 ---
 
 ## 🚀 Features
