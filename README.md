@@ -1,22 +1,50 @@
 # 📝 Fullstack Task Manager
 
-A simple **full-stack task management app** with Flask (backend) and React (frontend).  
-Users can add, update, mark as done, and delete tasks - with a clean UI and persistent storage.
-## Live Demo
-Frontend: (https://fullstack-task-manager-1.onrender.com/)
-Backend API: (https://fullstack-task-manager-58pu.onrender.com/)
----
+A fullstack task management application built with **Flask (backend)** and **React (frontend)**.  
+The system provides a complete CRUD workflow with a responsive UI and persistent data storage.
 
-## 🚀 Features
-- Backend: Flask REST API with full CRUD
-- Database: SQLite via SQLAlchemy ORM
-- Frontend: React + Vite, modern component-based UI
-- Styling: Custom CSS (dark theme)
-- CORS enabled for client-server communication
+## 🚀 Live Demo
+- **Frontend:** https://fullstack-task-manager-1.onrender.com/  
+- **Backend API:** https://fullstack-task-manager-58pu.onrender.com/
 
 ---
 
-## 📂 Project Structure
+## ✨ Features
+
+- Create, update, and delete tasks  
+- Mark tasks as completed  
+- Persistent storage using SQLite  
+- RESTful API design with Flask  
+- Responsive React UI with real-time updates  
+- Clean separation between frontend and backend services  
+
+---
+
+## 🧱 Architecture
+
+- **Frontend:** React (Vite), component-based architecture  
+- **Backend:** Flask REST API  
+- **Database:** SQLite with SQLAlchemy ORM  
+- **Communication:** HTTP requests (fetch API)  
+
+---
+
+## 🛠 Tech Stack
+
+**Backend**
+- Python, Flask  
+- SQLAlchemy  
+- Flask-CORS  
+
+**Frontend**
+- React  
+- Vite  
+- JavaScript (ES6+)  
+- CSS  
+
+---
+
+## 📦 Project Structure
 ```
 fullstack-task-app/
 │
@@ -57,67 +85,11 @@ fullstack-task-app/
 
 ---
 
-## 🛠️ Tech Stack
-- **Backend**: Python, Flask, Flask-SQLAlchemy, Flask-CORS, SQLite  
-- **Frontend**: React, Vite, Fetch API, HTML/CSS  
-- **Tools**: Node.js, npm, Git
+## ⚙️ Deployment
 
----
-
-## ⚙️ Setup
-
-### 1. Backend
-```bash
-cd backend
-pip install -r requirements.txt
-python app.py
-```
-Runs API at: http://127.0.0.1:5000
-
-### 2. Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Runs client at: http://localhost:5173
-
-#### Access from phone on same Wi-Fi (optional):
-- Run frontend with host: npm run dev -- --host
-- Run backend with: app.run(host="0.0.0.0", port=5000, debug=True)
-- Update src/config.js to use your machine IP, e.g. http://192.168.1.23:5000.
-
-## 📸 Screenshot
-![Task Manager Screenshot](screenshot.png)
-
-## ✅ QA & Automation (pytest)
-
-The backend includes **API integration tests** using `pytest` and Flask’s test client:
-
-- Healthcheck endpoint
-- Create (validation + input trimming)
-- List (ordered by `created_at` desc)
-- Update (title / description / done)
-- Delete (+ 404 cases)
-
-Each test runs against a **fresh SQLite DB** (fixture), ensuring full isolation.
-
-**Run tests**
-```bash
-cd backend
-pip install -r requirements.txt   # make sure pytest / pytest-cov are included
-pytest -q
-```
-With coverage
-```
-pytest --cov=./ --cov-report=term-missing
-```
-
-## 🔮 Future Work 
-- Inline editing of task title/description
-- Filters & search (e.g., show only open tasks)
-- Tests (Pytest for backend, React Testing Library for frontend)
-- Dockerization and simple deployment (Render for backend, Netlify for frontend)
+- Backend deployed on **Render (Web Service)**  
+- Frontend deployed on **Render (Static Site)**  
+- Fully integrated fullstack application with live endpoints  
 
 ## 👤 Author
 **Matanya Kedem**
