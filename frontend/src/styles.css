@@ -1,122 +1,517 @@
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
-
 /* ============================================================
-   OBSIDIAN STUDIO — Design System
-   Dark luxury editorial. Linear / Raycast aesthetic.
-   - Near-black matte surfaces, no gradients on panels
-   - Electric violet accent, used sparingly
-   - Inter typeface throughout
-   - Depth through shadow layering, not color fills
+   OBSIDIAN STUDIO — Task Manager Styles
    ============================================================ */
 
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+.ob-root {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  color: #f0f0f0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-:root {
-  --radius: 0.5rem;
-
-  /* Obsidian Studio palette */
-  --background:       oklch(0.08 0 0);       /* #0a0a0a — near-black matte */
-  --foreground:       oklch(0.94 0 0);       /* #f0f0f0 — off-white */
-  --card:             oklch(0.11 0 0);       /* #111111 — elevated surface */
-  --card-foreground:  oklch(0.94 0 0);
-  --popover:          oklch(0.13 0 0);
-  --popover-foreground: oklch(0.94 0 0);
-  --primary:          oklch(0.49 0.24 293);  /* #7c3aed — electric violet */
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary:        oklch(0.14 0 0);       /* #1a1a1a */
-  --secondary-foreground: oklch(0.65 0 0);
-  --muted:            oklch(0.16 0 0);
-  --muted-foreground: oklch(0.42 0 0);       /* #666666 */
-  --accent:           oklch(0.49 0.24 293);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive:      oklch(0.62 0.22 25);   /* #ff4444 */
-  --destructive-foreground: oklch(0.98 0 0);
-  --border:           oklch(0.18 0 0);       /* #222222 */
-  --input:            oklch(0.14 0 0);
-  --ring:             oklch(0.49 0.24 293);
-
-  /* Custom tokens */
-  --done-color:       oklch(0.72 0.16 142);  /* muted sage green */
-  --row-hover:        rgba(255, 255, 255, 0.025);
-  --hairline:         rgba(255, 255, 255, 0.07);
+.ob-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-    box-sizing: border-box;
-  }
+.ob-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #0a0a0a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 20px 0 18px;
+}
 
-  html, body, #root {
-    height: 100%;
-  }
+.ob-topbar-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
 
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-  }
+.ob-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #f0f0f0;
+}
 
-  button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]) {
-    @apply cursor-pointer;
+.ob-title-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #7c3aed;
+  box-shadow: 0 0 8px rgba(124, 58, 237, 0.7);
+  flex-shrink: 0;
+}
+
+.ob-badge {
+  font-size: 11px;
+  font-weight: 500;
+  color: #555;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 3px 9px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.ob-main {
+  padding-top: 36px;
+  padding-bottom: 80px;
+}
+
+.ob-form {
+  display: flex;
+  gap: 0;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.ob-form-fields {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.ob-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.ob-field-title {
+  flex: 2;
+}
+
+.ob-field-desc {
+  flex: 3;
+}
+
+.ob-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #444;
+  padding-left: 2px;
+}
+
+.ob-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #222;
+  color: #f0f0f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 2px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s ease;
+  caret-color: #7c3aed;
+}
+
+.ob-input::placeholder {
+  color: #3a3a3a;
+}
+
+.ob-input:focus {
+  border-bottom-color: #7c3aed;
+}
+
+.ob-field::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #7c3aed;
+  transition: width 0.25s ease;
+  pointer-events: none;
+}
+
+.ob-field:focus-within::after {
+  width: 100%;
+}
+
+.ob-btn-add {
+  appearance: none;
+  border: none;
+  background: #7c3aed;
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 16px;
+  margin-bottom: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 rgba(124, 58, 237, 0);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.ob-btn-add:hover {
+  background: #6d28d9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+}
+
+.ob-btn-add:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.2);
+}
+
+.ob-btn-add:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.4);
+}
+
+.ob-btn-add:disabled {
+  background: #1a1a1a;
+  color: #3a3a3a;
+  border: 1px solid #222;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.ob-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin-bottom: 0;
+}
+
+.ob-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ob-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 4px;
+  position: relative;
+  transition: background 0.15s ease;
+  animation: ob-slide-in 0.2s ease-out both;
+}
+
+.ob-item:last-child {
+  border-bottom: none;
+}
+
+.ob-item:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+@keyframes ob-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@layer components {
-  .container {
+.ob-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid #333;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.ob-item:hover .ob-checkbox {
+  border-color: #555;
+}
+
+.ob-checkbox:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.35);
+  border-color: #7c3aed;
+}
+
+.ob-checkbox:checked {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  animation: ob-check-pop 0.2s ease-out;
+}
+
+@keyframes ob-check-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+.ob-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: 1.5px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.ob-item-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ob-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f0f0f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  line-height: 1.4;
+}
+
+.ob-item-desc {
+  font-size: 12px;
+  font-weight: 400;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease;
+  line-height: 1.4;
+}
+
+.ob-item--done {
+  transition: opacity 0.3s ease;
+}
+
+.ob-item--done .ob-item-title {
+  text-decoration: line-through;
+  color: #555;
+}
+
+.ob-item--done .ob-item-desc {
+  color: #444;
+}
+
+.ob-btn-delete {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #2a2a2a;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: color 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+}
+
+.ob-item:hover .ob-btn-delete {
+  opacity: 1;
+  color: #555;
+}
+
+.ob-btn-delete:hover {
+  color: #ff4444 !important;
+  background: rgba(255, 68, 68, 0.08);
+}
+
+.ob-btn-delete:focus-visible {
+  outline: none;
+  opacity: 1;
+  color: #ff4444;
+  box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.4);
+}
+
+.ob-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 20px;
+  text-align: center;
+  gap: 12px;
+}
+
+.ob-empty-ring {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.ob-empty-ring-inner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1e1e1e;
+}
+
+.ob-empty-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3a3a3a;
+  letter-spacing: -0.01em;
+}
+
+.ob-empty-sub {
+  font-size: 12px;
+  color: #2e2e2e;
+  font-weight: 400;
+}
+
+.ob-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px 0;
+  gap: 12px;
+}
+
+.ob-footer-count {
+  font-size: 12px;
+  color: #444;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.ob-btn-clear {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #444;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.ob-btn-clear:hover {
+  color: #666;
+  text-decoration-color: #444;
+}
+
+.ob-btn-clear:focus-visible {
+  outline: none;
+  color: #f0f0f0;
+}
+
+.ob-btn-clear:disabled {
+  color: #252525;
+  cursor: not-allowed;
+  text-decoration-color: transparent;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0a0a0a;
+  color: #f0f0f0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .ob-topbar-inner,
+  .ob-wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .ob-main {
+    padding-top: 28px;
+  }
+
+  .ob-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 32px;
+  }
+
+  .ob-form-fields {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ob-btn-add {
+    margin-left: 0;
+    margin-top: 20px;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 12px 18px;
+    font-size: 13px;
   }
 
-  .flex {
-    min-height: 0;
-    min-width: 0;
+  .ob-item-title,
+  .ob-item-desc {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
   }
 
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
+  .ob-btn-delete {
+    opacity: 1;
+    color: #333;
   }
 
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
-      max-width: 1280px;
-    }
+  .ob-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }
