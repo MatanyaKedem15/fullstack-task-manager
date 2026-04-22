@@ -15,7 +15,17 @@
   margin: 0 auto;
   padding: 0 20px;
 }
-
+.ob-title-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.15);
+  box-shadow: 0 0 6px rgba(124, 58, 237, 0.5);
+}
 .ob-topbar {
   position: sticky;
   top: 0;
