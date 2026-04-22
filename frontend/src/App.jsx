@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { API_BASE } from "./config";
 import TaskForm from "./components/TaskForm.jsx";
 import TaskList from "./components/TaskList.jsx";
@@ -14,50 +14,89 @@ export default function App() {
     setTasks(data);
     setLoading(false);
   }
-  useEffect(() => { load(); }, []);
+
+  useEffect(() => {
+    load();
+  }, []);
 
   async function createTask(payload) {
     const res = await fetch(`${API_BASE}/tasks`, {
-      method: "POST", headers: { "Content-Type": "application/json" },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
     const created = await res.json();
-    setTasks(ts => [created, ...ts]);
+    setTasks((ts) => [created, ...ts]);
   }
+
   async function toggleDone(task) {
     const res = await fetch(`${API_BASE}/tasks/${task.id}`, {
-      method: "PUT", headers: { "Content-Type": "application/json" },
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ done: !task.done }),
     });
     const updated = await res.json();
-    setTasks(ts => ts.map(t => t.id === updated.id ? updated : t));
+    setTasks((ts) => ts.map((t) => (t.id === updated.id ? updated : t)));
   }
+
   async function deleteTask(id) {
     await fetch(`${API_BASE}/tasks/${id}`, { method: "DELETE" });
-    setTasks(ts => ts.filter(t => t.id !== id));
+    setTasks((ts) => ts.filter((t) => t.id !== id));
   }
 
-  const doneCount = useMemo(() => tasks.filter(t => t.done).length, [tasks]);
+  async function clearCompleted() {
+    const completed = tasks.filter((t) => t.done);
+
+    await Promise.all(
+      completed.map((task) =>
+        fetch(`${API_BASE}/tasks/${task.id}`, { method: "DELETE" })
+      )
+    );
+
+    setTasks((ts) => ts.filter((t) => !t.done));
+  }
+
+  const remaining = tasks.filter((t) => !t.done).length;
 
   return (
-    <div className="container">
-      <div className="card">
-        <div className="header">
-          <h1 className="title">🗂️ Task Manager</h1>
-          <span className="badge">{doneCount}/{tasks.length} done</span>
+    <div className="ob-root">
+      <header className="ob-topbar" role="banner">
+        <div className="ob-topbar-inner">
+          <h1 className="ob-title">
+            <span className="ob-title-dot" aria-hidden="true" />
+            Obsidian Tasks
+          </h1>
+
+          <span className="ob-badge" aria-label={`${tasks.length} total tasks`}>
+            {tasks.length === 0
+              ? "No tasks"
+              : `${tasks.length} task${tasks.length !== 1 ? "s" : ""}`}
+          </span>
         </div>
+      </header>
 
-        <TaskForm onCreate={createTask} />
+      <main className="ob-main">
+        <div className="ob-wrap">
+          <TaskForm onCreate={createTask} />
 
-        <hr />
-        {loading ? <p style={{color:"#94a3b8"}}>Loading…</p> :
-          <TaskList tasks={tasks} onToggle={toggleDone} onDelete={deleteTask} />}
-
-        <div className="footer">
-          <span>Flask API · SQLite</span>
-          <button className="secondary" onClick={load}>Refresh</button>
+          {loading ? (
+            <div className="ob-empty" role="status" aria-live="polite">
+              <div className="ob-empty-ring" aria-hidden="true">
+                <div className="ob-empty-ring-inner" />
+              </div>
+              <p className="ob-empty-title">Loading…</p>
+              <p className="ob-empty-sub">Fetching your tasks.</p>
+            </div>
+          ) : (
+            <TaskList
+              tasks={tasks}
+              onToggle={toggleDone}
+              onDelete={deleteTask}
+              onClearCompleted={clearCompleted}
+            />
+          )}
         </div>
-      </div>
+      </main>
     </div>
   );
 }
