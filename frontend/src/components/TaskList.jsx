@@ -1,5 +1,3 @@
-import "./tasks.css";
-
 export default function TaskList({ tasks, onToggle, onDelete, onClearCompleted }) {
   const remaining = tasks.filter((t) => !t.done).length;
   const completedCount = tasks.filter((t) => t.done).length;
