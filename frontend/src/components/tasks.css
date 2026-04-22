@@ -1,0 +1,23 @@
+<div className="ob-root">
+  <header className="ob-topbar">
+    <div className="ob-topbar-inner">
+      <h1 className="ob-title">
+        <span className="ob-title-dot" />
+        Obsidian Tasks
+      </h1>
+      <span className="ob-badge">{tasks.length} tasks</span>
+    </div>
+  </header>
+
+  <main className="ob-main">
+    <div className="ob-wrap">
+      <TaskForm onCreate={...} />
+      <TaskList
+        tasks={tasks}
+        onToggle={...}
+        onDelete={...}
+        onClearCompleted={...}
+      />
+    </div>
+  </main>
+</div>
