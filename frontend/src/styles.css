@@ -24,7 +24,8 @@
   border-radius: 50%;
   color: #7c3aed;
   background: rgba(124, 58, 237, 0.15);
-  box-shadow: 0 0 6px rgba(124, 58, 237, 0.5);
+  box-shadow: 0 0 6px rgba(124, 58, 237, 0.35);
+  flex-shrink: 0;
 }
 .ob-topbar {
   position: sticky;
