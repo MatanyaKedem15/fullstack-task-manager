@@ -59,13 +59,20 @@ export default function App() {
   const remaining = tasks.filter((t) => !t.done).length;
 
   return (
-    <div className="ob-root">
-      <header className="ob-topbar" role="banner">
-        <div className="ob-topbar-inner">
-          <h1 className="ob-title">
-            <span className="ob-title-dot" aria-hidden="true" />
-            Obsidian Tasks
-          </h1>
+    <h1 className="ob-title">
+  <span className="ob-title-icon" aria-hidden="true">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M5 13l4 4L19 7"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+  TaskFlow
+</h1>
 
           <span className="ob-badge" aria-label={`${tasks.length} total tasks`}>
             {tasks.length === 0
