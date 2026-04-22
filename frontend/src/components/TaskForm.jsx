@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import "./tasks.css";
 
 export default function TaskForm({ onCreate }) {
   const [title, setTitle] = useState("");
